@@ -5,7 +5,7 @@ import notFound from "./not-found.json";
 
 export default function NotFound404() {
   return (
-    <div className="w-animation h-animation">
+    <div style={{ height: "512px", width: "512px" }}>
       <Lottie animationData={notFound} loop={true} />
     </div>
   );
