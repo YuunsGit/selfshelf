@@ -15,13 +15,10 @@ export default function Description({ content }: { content: string }) {
   return (
     <>
       <div
-        className={`relative overflow-hidden duration-300 ${
-          descriptionHeight > 176
-            ? extended
-              ? "max-h-[600px]"
-              : "max-h-44"
-            : ""
-        }`}
+        className="relative max-h-44 overflow-hidden duration-300"
+        style={{
+          maxWidth: descriptionHeight > 176 ? (extended ? "600px" : "") : "",
+        }}
       >
         <p
           className="mt-6"
