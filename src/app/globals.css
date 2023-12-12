@@ -3,25 +3,140 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+    --placeholder-primary: #eeeeee;
+    --placeholder-secondary: #cccccc;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background-color: #f5f5f1;
+}
+
+.book-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 600px;
+}
+
+@keyframes initAnimation {
+    0% {
+        transform: rotateY(-30deg);
+    }
+    100% {
+        transform: rotateY(0deg);
+    }
+}
+
+.book {
+    width: 150px;
+    height: 250px;
+    position: relative;
+    transform-style: preserve-3d;
+    transform: rotateY(0deg);
+    transition: 0.5s ease;
+    animation: 1s ease 0s 1 initAnimation;
+}
+
+.book-container:hover .book,
+.book-container:focus .book {
+    transform: rotateY(-30deg);
+}
+
+.book > :first-child {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 150px;
+    height: 250px;
+    transform: translateZ(15px);
+    animation: placeholder ease-in-out 1.5s infinite;
+    border-radius: 0 5px 5px 0;
+    box-shadow: 5px 0px 20px #666;
+}
+
+.book::before {
+    position: absolute;
+    content: ' ';
+    left: 0;
+    top: 2px;
+    width: 28px;
+    height: 246px;
+    transform: translateX(133px) rotateY(90deg);
+    background: blue linear-gradient(90deg,
+    #fff 0%,
+    #f9f9f9 5%,
+    #fff 10%,
+    #f9f9f9 15%,
+    #fff 20%,
+    #f9f9f9 25%,
+    #fff 30%,
+    #f9f9f9 35%,
+    #fff 40%,
+    #f9f9f9 45%,
+    #fff 50%,
+    #f9f9f9 55%,
+    #fff 60%,
+    #f9f9f9 65%,
+    #fff 70%,
+    #f9f9f9 75%,
+    #fff 80%,
+    #f9f9f9 85%,
+    #fff 90%,
+    #f9f9f9 95%,
+    #fff 100%
+    );
+}
+
+.book::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: ' ';
+    width: 150px;
+    height: 250px;
+    transform: translateZ(-15px);
+    background-color: #000000;
+    border-radius: 0 5px 5px 0;
+}
+
+@keyframes book-bounce {
+    0%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+}
+
+@keyframes shelf-lift {
+    0%, 100% { transform: translateY(0) rotate(0); }
+    20% { transform: translateY(-4px) rotate(10deg); }
+    40% { transform: translateY(-4px) rotate(0); }
+    60% { transform: translateY(-4px) rotate(-10deg); }
+    80% { transform: translateY(0); }
+}
+
+.book-shelf__book {
+    animation: book-bounce 1s ease infinite;
+}
+
+.book-shelf__book--two {
+    animation-delay: 0.04s;
+}
+
+.book-shelf__book--three {
+    animation-delay: 0.08s;
+}
+
+.book-shelf__shelf {
+    animation: shelf-lift 1s ease infinite;
+    transform-origin: 50% 50%;
+}
+
+@keyframes placeholder {
+    0% {
+        background-color: var(--placeholder-primary);
+    }
+    50% {
+        background-color: var(--placeholder-secondary);
+    }
+    100% {
+        background-color: var(--placeholder-primary);
+    }
 }

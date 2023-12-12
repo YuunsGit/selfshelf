@@ -1,0 +1,88 @@
+.book-container-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 800px;
+}
+
+@keyframes initAnimation-page {
+    0% {
+        transform: rotateY(0deg);
+    }
+    100% {
+        transform: rotateY(-20deg);
+    }
+}
+
+.book-page {
+    width: 300px;
+    height: 450px;
+    position: relative;
+    transform-style: preserve-3d;
+    transform: rotateY(-20deg);
+    transition: 1s ease;
+    animation: 1s ease 0s 1 initAnimation-page;
+}
+
+.book-container-page:hover .book-page,
+.book-container-page:focus .book-page {
+    transform: rotateY(0deg);
+}
+
+.book-page > :first-child {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 450px;
+    transform: translateZ(27.5px);
+    animation: placeholder ease-in-out 1.5s infinite;
+    border-radius: 0 3px 3px 0;
+    box-shadow: 5px 5px 20px #666;
+}
+
+.book-page::before {
+    position: absolute;
+    content: ' ';
+    left: 0;
+    top: 3px;
+    width: 53px;
+    height: 444px;
+    transform: translateX(269.5px) rotateY(90deg);
+    background: blue linear-gradient(90deg,
+    #fff 0%,
+    #f9f9f9 5%,
+    #fff 10%,
+    #f9f9f9 15%,
+    #fff 20%,
+    #f9f9f9 25%,
+    #fff 30%,
+    #f9f9f9 35%,
+    #fff 40%,
+    #f9f9f9 45%,
+    #fff 50%,
+    #f9f9f9 55%,
+    #fff 60%,
+    #f9f9f9 65%,
+    #fff 70%,
+    #f9f9f9 75%,
+    #fff 80%,
+    #f9f9f9 85%,
+    #fff 90%,
+    #f9f9f9 95%,
+    #fff 100%
+    );
+}
+
+.book-page::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: ' ';
+    width: 300px;
+    height: 450px;
+    transform: translateZ(-27.5px);
+    border-radius: 0 3px 3px 0;
+    background: #000;
+    box-shadow: -10px 0 50px 10px #666;
+}

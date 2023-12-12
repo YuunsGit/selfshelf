@@ -1,13 +1,7 @@
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import data from "../../public/data.json";
-import { addBook } from "@/redis/book";
+"use client";
+
+import Books from "@/components/Books";
 
 export default function Home() {
-  return (
-    <>
-      <Header />
-      <Footer />
-    </>
-  );
+  return <Books />;
 }
