@@ -1,7 +1,10 @@
-"use client";
+import { listBooks } from "@/lib/book";
+import Books from "@/components/books";
 
-import Books from "@/components/Books";
+export default async function Home() {
+  const books: Book[] | undefined = await listBooks();
 
-export default function Home() {
-  return <Books />;
+  await new Promise((resolve) => setTimeout(resolve, 5000));
+
+  return <Books bookData={books} />;
 }

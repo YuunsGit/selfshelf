@@ -2,7 +2,7 @@
 
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { useContext } from "react";
-import { SearchContext } from "@/context/SearchContext";
+import { SearchContext } from "@/context/search-context";
 import { usePathname, useRouter } from "next/navigation";
 
 export default function Search() {

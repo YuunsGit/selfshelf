@@ -5,6 +5,7 @@
 :root {
     --placeholder-primary: #eeeeee;
     --placeholder-secondary: #cccccc;
+    --toastify-font-family: "Inter", sans-serif;
 }
 
 body {

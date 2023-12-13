@@ -4,8 +4,10 @@ import { UserCircleIcon as UserSolid } from "@heroicons/react/24/solid";
 import { useContext, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { AuthContext } from "@/context/AuthContext";
-import { logout } from "@/api/auth";
+import { AuthContext } from "@/context/auth-context";
+import { logout } from "@/lib/auth";
+import { toast } from "react-toastify";
+import { cn } from "@/lib/utils";
 
 export default function User() {
   const user = useContext(AuthContext);
@@ -23,7 +25,8 @@ export default function User() {
   };
 
   const logoutFromAccount = () => {
-    logout().then(() => {
+    logout().then((res) => {
+      toast.success(res.message);
       router.push("/");
       router.refresh();
     });

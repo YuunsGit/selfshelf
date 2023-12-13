@@ -1,7 +1,7 @@
 "use client";
 
 import Lottie from "lottie-react";
-import reading from "./reading.json";
+import reading from "./lottie/reading.json";
 
 export default function Reading() {
   return (

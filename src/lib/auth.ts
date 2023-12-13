@@ -2,9 +2,9 @@
 
 import bcrypt from "bcryptjs";
 import { cookies } from "next/dist/client/components/headers";
-import { userSchema } from "@/api/joi";
+import { userSchema } from "@/lib/joi";
 import { kv } from "@vercel/kv";
-import { addUser, getUser } from "@/api/user";
+import { addUser, getUser } from "@/lib/user";
 
 export async function registerUser({
   name,
@@ -76,7 +76,7 @@ export async function login({
   cookies().set("session", sessionId, { secure: true, httpOnly: true });
 
   return {
-    message: "Log in successful",
+    message: "Login successful",
     user: {
       id: user.id,
       email: user.email,
@@ -93,7 +93,7 @@ export async function logout() {
   cookies().delete("session");
 
   return {
-    message: "Log out successful",
+    message: "Logout successful",
   };
 }
 

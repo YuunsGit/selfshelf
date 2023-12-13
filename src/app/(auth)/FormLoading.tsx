@@ -1,7 +1,7 @@
 "use client";
 
 import { useContext } from "react";
-import { AuthContext } from "@/context/AuthContext";
+import { AuthContext } from "@/context/auth-context";
 import { useRouter } from "next/navigation";
 
 export default function FormLoading({
@@ -14,5 +14,5 @@ export default function FormLoading({
 
   if (user) router.push("/");
 
-  return <div>{!user && children}</div>;
+  return <>{!user && children}</>;
 }

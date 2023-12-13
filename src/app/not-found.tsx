@@ -1,4 +1,4 @@
-import NotFound404 from "@/animations/NotFound404";
+import NotFound404 from "@/assets/animations/not-found-404";
 import Link from "next/link";
 
 export default function NotFound() {

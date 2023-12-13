@@ -18,6 +18,7 @@ export const userSchema = Joi.object().keys({
       "string.max": "max 32 characters",
       "string.min": "min 3 characters",
       "string.empty": "required",
+      "string.pattern.base": "no special characters",
     }),
   password: Joi.string().min(6).max(30).required().strict().messages({
     "string.max": "max 30 characters",

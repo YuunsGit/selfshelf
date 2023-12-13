@@ -2,7 +2,7 @@
 
 import { toast } from "react-toastify";
 import { FormEvent, useState } from "react";
-import { login } from "@/api/auth";
+import { login } from "@/lib/auth";
 import { useRouter } from "next/navigation";
 
 export default function LoginForm() {
@@ -33,7 +33,7 @@ export default function LoginForm() {
       <div>
         <label
           htmlFor="email"
-          className="block text-lg font-medium leading-6 text-gray-900"
+          className="block text-lg font-medium leading-6 text-text"
         >
           Email address
         </label>
@@ -46,7 +46,7 @@ export default function LoginForm() {
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="block w-full rounded-md border-0 px-2 py-1.5 text-sm leading-6 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-bronze"
+            className="block w-full rounded-md border-0 px-2 py-1.5 text-sm leading-6 text-text shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-bronze"
           />
         </div>
       </div>
@@ -55,7 +55,7 @@ export default function LoginForm() {
         <div>
           <label
             htmlFor="password"
-            className="block text-lg font-medium leading-6 text-gray-900"
+            className="block text-lg font-medium leading-6 text-text"
           >
             Password
           </label>
@@ -69,7 +69,7 @@ export default function LoginForm() {
             required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="block w-full rounded-md border-0 px-2 py-1.5 text-sm leading-6 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-bronze"
+            className="block w-full rounded-md border-0 px-2 py-1.5 text-sm leading-6 text-text shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-bronze"
           />
         </div>
       </div>

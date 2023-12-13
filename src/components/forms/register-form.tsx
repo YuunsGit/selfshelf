@@ -1,13 +1,13 @@
 "use client";
 
 import { toast } from "react-toastify";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { joiResolver } from "@hookform/resolvers/joi";
 import { useRouter } from "next/navigation";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { userSchema } from "@/api/joi";
+import { userSchema } from "@/lib/joi";
 import { ExclamationCircleIcon } from "@heroicons/react/20/solid";
-import { registerUser } from "@/api/auth";
+import { registerUser } from "@/lib/auth";
 
 type Inputs = {
   name: string;
@@ -45,7 +45,7 @@ export default function RegisterForm() {
       <div>
         <label
           htmlFor="name"
-          className="relative flex justify-between text-lg font-medium leading-6 text-gray-900"
+          className="relative flex justify-between text-lg font-medium leading-6 text-text"
         >
           <p>Name</p>
           {errors.name && (
@@ -62,7 +62,7 @@ export default function RegisterForm() {
             autoComplete="name"
             required
             {...register("name")}
-            className="block w-full rounded-md border-0 px-2 py-1.5 leading-6 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-bronze"
+            className="block w-full rounded-md border-0 px-2 py-1.5 leading-6 text-text shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-bronze"
           />
         </div>
       </div>
@@ -70,7 +70,7 @@ export default function RegisterForm() {
       <div>
         <label
           htmlFor="email"
-          className="relative flex justify-between text-lg font-medium leading-6 text-gray-900"
+          className="relative flex justify-between text-lg font-medium leading-6 text-text"
         >
           <p>Email address</p>
           {errors.email && (
@@ -87,7 +87,7 @@ export default function RegisterForm() {
             autoComplete="email"
             required
             {...register("email")}
-            className="block w-full rounded-md border-0 px-2 py-1.5 leading-6 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-bronze"
+            className="block w-full rounded-md border-0 px-2 py-1.5 leading-6 text-text shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-bronze"
           />
         </div>
       </div>
@@ -96,7 +96,7 @@ export default function RegisterForm() {
         <div>
           <label
             htmlFor="password"
-            className="relative flex justify-between text-lg font-medium leading-6 text-gray-900"
+            className="relative flex justify-between text-lg font-medium leading-6 text-text"
           >
             <p>Password</p>
             {errors.password && (
@@ -114,7 +114,7 @@ export default function RegisterForm() {
             autoComplete="current-password"
             required
             {...register("password")}
-            className="block w-full rounded-md border-0 px-2 py-1.5 leading-6 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-bronze"
+            className="block w-full rounded-md border-0 px-2 py-1.5 leading-6 text-text shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-bronze"
           />
         </div>
       </div>
@@ -123,7 +123,7 @@ export default function RegisterForm() {
         <div>
           <label
             htmlFor="confirmPwd"
-            className="relative flex justify-between text-lg font-medium leading-6 text-gray-900"
+            className="relative flex justify-between text-lg font-medium leading-6 text-text"
           >
             <p>Confirm password</p>
             {errors.confirmPwd && (
@@ -141,7 +141,7 @@ export default function RegisterForm() {
             autoComplete="off"
             required
             {...register("confirmPwd")}
-            className="block w-full rounded-md border-0 px-2 py-1.5 leading-6 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-bronze"
+            className="block w-full rounded-md border-0 px-2 py-1.5 leading-6 text-text shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-bronze"
           />
         </div>
       </div>

@@ -1,13 +1,14 @@
 import { Inika } from "next/font/google";
-import "./globals.css";
-import Footer from "@/components/Footer";
+import "../styles/globals.css";
+import Footer from "@/components/footer";
 import React from "react";
 import "react-toastify/dist/ReactToastify.css";
-import Container from "@/components/ToastContainer";
-import AuthProvider from "@/context/AuthContext";
-import Header from "@/components/Header";
-import { authorize } from "@/api/auth";
-import SearchProvider from "@/context/SearchContext";
+import Container from "@/components/toast-container";
+import AuthProvider from "@/context/auth-context";
+import Header from "@/components/header";
+import { authorize } from "@/lib/auth";
+import SearchProvider from "@/context/search-context";
+import { cn } from "@/lib/utils";
 
 export const metadata = {
   title: {
@@ -33,7 +34,10 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inika.className} flex min-h-screen flex-col justify-between overflow-x-hidden`}
+        className={cn(
+          inika.className,
+          "flex min-h-screen flex-col justify-between overflow-x-hidden",
+        )}
       >
         <AuthProvider user={user}>
           <SearchProvider>

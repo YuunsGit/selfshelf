@@ -1,7 +1,7 @@
 "use client";
 
 import Lottie from "lottie-react";
-import notFound from "./not-found.json";
+import notFound from "./lottie/not-found.json";
 
 export default function NotFound404() {
   return (

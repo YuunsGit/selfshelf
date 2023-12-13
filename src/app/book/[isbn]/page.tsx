@@ -1,26 +1,25 @@
-// @ts-ignore
-import { getBook } from "@/api/book";
+import { getBook } from "@/lib/book";
 import { Metadata } from "next";
-import "./book.css";
+import "@/styles/book.css";
 import Image from "next/image";
-import Description from "@/app/book/[isbn]/Description";
+import Description from "@/components/description";
 import {
   BookOpenIcon,
   CalendarIcon,
   LanguageIcon,
 } from "@heroicons/react/20/solid";
-import { getReaders } from "@/api/loan";
-import Languages from "@/app/book/[isbn]/Languages";
-import Location from "@/app/book/[isbn]/Location";
+import { getReaders } from "@/lib/loan";
+import Languages from "@/components/languages";
+import Location from "@/components/location";
 
 export async function generateMetadata({ params }: any): Promise<Metadata> {
   const isbn = params.isbn;
   const book = await getBook(isbn);
-  const imgs = book?.cover ? [book?.cover] : [];
+  const images = book?.cover ? [book?.cover] : [];
   return {
     title: book?.title || "Unknown Book",
     openGraph: {
-      images: imgs,
+      images,
     },
   };
 }
@@ -29,12 +28,14 @@ export default async function Book({ params }: { params: { isbn: string } }) {
   const book = await getBook(params.isbn);
   const readers = await getReaders(params.isbn);
 
+  await new Promise((resolve) => setTimeout(resolve, 20000));
+
   return (
     <main className="mx-auto w-full max-w-7xl flex-grow rounded-md border border-taupe border-opacity-40 bg-white p-16 text-text shadow-search">
       {book ? (
         <div className="flex items-start space-x-24">
           <div className="flex flex-col space-y-16">
-            <div className="book-container-page w-fit">
+            <div className="book-container-page my-6 w-fit">
               <div className="book-page">
                 <Image
                   priority

@@ -1,6 +1,6 @@
-import LoginForm from "./LoginForm";
+import LoginForm from "@/components/forms/login-form";
 import Link from "next/link";
-import Reading from "@/animations/Reading";
+import Reading from "@/assets/animations/reading";
 import FormLoading from "@/app/(auth)/FormLoading";
 
 export const metadata = {

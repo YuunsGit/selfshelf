@@ -12,7 +12,7 @@ const nextConfig = {
         protocol: "https",
         hostname: "flagcdn.com",
         port: "",
-        pathname: "/24x18/**",
+        pathname: "/32x24/**",
       },
     ],
   },

@@ -1,7 +1,7 @@
-import Logo from "@/assets/Logo";
-import User from "@/components/User";
+import Logo from "@/assets/logo";
+import User from "@/components/user";
 import Link from "next/link";
-import Search from "@/components/Search";
+import Search from "@/components/search";
 
 export default function Header() {
   return (

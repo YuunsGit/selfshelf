@@ -1,5 +1,5 @@
-import RegisterForm from "@/app/(auth)/register/RegisterForm";
-import Research from "@/animations/Research";
+import RegisterForm from "@/components/forms/register-form";
+import Research from "@/assets/animations/reserach";
 import FormLoading from "@/app/(auth)/FormLoading";
 
 export const metadata = {
