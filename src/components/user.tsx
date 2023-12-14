@@ -1,13 +1,16 @@
 "use client";
 
 import { UserCircleIcon as UserSolid } from "@heroicons/react/24/solid";
+import {
+  UserIcon,
+  ArrowLeftOnRectangleIcon,
+} from "@heroicons/react/24/outline";
 import { useContext, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { AuthContext } from "@/context/auth-context";
 import { logout } from "@/lib/auth";
 import { toast } from "react-toastify";
-import { cn } from "@/lib/utils";
 
 export default function User() {
   const user = useContext(AuthContext);
@@ -72,12 +75,13 @@ export default function User() {
                   onClick={goToProfile}
                   className="block w-full px-4 py-2 text-left text-sm text-text hover:bg-gray-100 hover:text-taupe"
                 >
-                  Profile
+                  <UserIcon className="mr-1 inline h-5 w-5" /> Profile
                 </button>
                 <button
                   onClick={logoutFromAccount}
                   className="block w-full px-4 py-2 text-left text-sm text-text hover:bg-gray-100 hover:text-taupe"
                 >
+                  <ArrowLeftOnRectangleIcon className="mr-1 inline h-5 w-5" />{" "}
                   Logout
                 </button>
               </div>

@@ -17,8 +17,10 @@ interface User {
 }
 
 interface Loan {
-  userId: string;
-  isbn: string;
+  id: string;
+  active: boolean;
   loanDate: Date;
   dueDate: Date;
+  userId: string;
+  bookId: string;
 }

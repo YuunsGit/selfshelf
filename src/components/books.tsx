@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { useContext, useEffect, useState } from "react";
-import Loading from "@/assets/animations/loading";
 import { SearchContext } from "@/context/search-context";
 import Link from "next/link";
 
@@ -70,6 +69,17 @@ export default function Books({ bookData }: { bookData: Book[] | undefined }) {
           </>
         ))}
       </div>
+      {displayedBooks?.length === 0 && (
+        <div className="flex h-full flex-col justify-center">
+          <Image
+            src="/book-not-found.svg"
+            alt="Book not found"
+            width={350}
+            height={350}
+          />
+          <p className="text-lg">Searched book not found</p>
+        </div>
+      )}
     </main>
   );
 }

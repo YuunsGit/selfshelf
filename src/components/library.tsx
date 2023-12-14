@@ -5,7 +5,7 @@ export default function Library() {
       viewBox="0 0 1403 698"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className="w-full"
+      className="w-full drop-shadow-xl"
     >
       <rect
         id="1"

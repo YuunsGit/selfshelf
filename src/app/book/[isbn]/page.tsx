@@ -11,13 +11,14 @@ import {
 import { getReaders } from "@/lib/loan";
 import Languages from "@/components/languages";
 import Location from "@/components/location";
+import LoanButton from "@/components/loan-button";
 
 export async function generateMetadata({ params }: any): Promise<Metadata> {
   const isbn = params.isbn;
   const book = await getBook(isbn);
   const images = book?.cover ? [book?.cover] : [];
   return {
-    title: book?.title || "Unknown Book",
+    title: book?.title || "Book Not Found",
     openGraph: {
       images,
     },
@@ -28,7 +29,7 @@ export default async function Book({ params }: { params: { isbn: string } }) {
   const book = await getBook(params.isbn);
   const readers = await getReaders(params.isbn);
 
-  await new Promise((resolve) => setTimeout(resolve, 20000));
+  const reader = readers?.find((loan) => loan.active);
 
   return (
     <main className="mx-auto w-full max-w-7xl flex-grow rounded-md border border-taupe border-opacity-40 bg-white p-16 text-text shadow-search">
@@ -71,9 +72,12 @@ export default async function Book({ params }: { params: { isbn: string } }) {
             </div>
           </div>
           <div>
-            <div>
-              <h1 className="text-4xl font-bold text-text">{book.title}</h1>
-              <p>by {book.author}</p>
+            <div className="flex justify-between">
+              <div>
+                <h1 className="text-4xl font-bold text-text">{book.title}</h1>
+                <p>by {book.author}</p>
+              </div>
+              <LoanButton reader={reader} isbn={book.isbn} />
             </div>
             <Description content={book.description} />
             <Location location={book.location} />

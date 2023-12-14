@@ -48,9 +48,9 @@ export async function updateUser(
   }
 }
 
-export async function getUser(email: string) {
+export async function getUser(id: string) {
   try {
-    return await prisma.user.findUnique({ where: { email } });
+    return await prisma.user.findUnique({ where: { id } });
   } catch (e) {
     console.log(e);
   }

@@ -70,3 +70,11 @@ export async function getReaders(isbn: string) {
     console.log(e);
   }
 }
+
+export async function getLoans(userId: string) {
+  try {
+    return await prisma.loan.findMany({ where: { userId } });
+  } catch (e) {
+    console.log(e);
+  }
+}

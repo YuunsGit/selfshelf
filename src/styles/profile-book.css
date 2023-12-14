@@ -1,0 +1,78 @@
+.wrapper {
+    max-width: calc(100% / 4);
+    min-width: 10em;
+}
+
+.book-profile {
+    height: 250px;
+    width: 175px;
+    position: relative;
+    transition: .4s ease-in-out;
+    border-radius: 5px 15px 15px 5px;
+    transform-origin: left center 0px;
+    display: inline-block;
+    margin: 32px;
+    perspective: 800px;
+}
+
+.book-profile:hover {
+    transform: rotateZ(-8deg);
+}
+
+.book-profile:hover .book__cover {
+    transform: rotateY(-40deg);
+    z-index: 999;
+    box-shadow: 20px 10px 50px rgba(0,0,0,0.2);
+}
+
+.book__cover {
+    height: 250px;
+    width: 175px;
+    position: absolute;
+    border-radius: 5px 15px 15px 5px;
+    box-shadow: 0 0 5px 1.5px rgba(0, 0, 0, 0.25);
+    z-index: 10;
+    transition: .5s linear;
+    transform-style: preserve-3d;
+    transform-origin: left center 0px;
+    background-size: 180px 255px;
+}
+
+.book__detail {
+    background-color: rgba(51, 51, 51, 0.8);
+    margin-top: 185px;
+    padding: 15px;
+    font-size: 12px;
+    font-weight: 800;
+    position: relative;
+    z-index: 10;
+    color: #fff;
+    text-align: left;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.2);
+}
+
+.book__page {
+    height: 100%;
+    width: 175px;
+    position: absolute;
+    background-color: #fbfae8;
+    z-index: 0;
+    box-shadow: 0 0 5px 1.5px rgba(0, 0, 0, 0.25);
+    border-radius: 5px 16px 16px 5px;
+    overflow: hidden;
+}
+
+.book__page.ruled {
+    background: linear-gradient(to bottom, #fbfae8 9px, #e4e4e4 1px);
+    background-size: 100% 10px;
+}
+
+.book__page.squared {
+    background-image: linear-gradient(#e4e4e4 1px, transparent 1px), linear-gradient(90deg, #e4e4e4 1px, transparent 1px);
+    background-size: 10px 10px, 10px 10px, 2px 2px, 2px 2px;
+}
+
+.book__page.dotted {
+    background: linear-gradient(90deg, #fbfae8 10px, transparent 1%) center, linear-gradient(#fbfae8 10px, transparent 1%) center, #999;
+    background-size: 11px 11px;
+}
