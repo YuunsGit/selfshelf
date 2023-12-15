@@ -78,3 +78,16 @@ export async function getLoans(userId: string) {
     console.log(e);
   }
 }
+
+export async function returnBook(id: string) {
+  try {
+    return await prisma.loan.update({
+      data: {
+        active: false,
+      },
+      where: { id },
+    });
+  } catch (e) {
+    console.log(e);
+  }
+}

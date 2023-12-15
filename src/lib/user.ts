@@ -48,6 +48,14 @@ export async function updateUser(
   }
 }
 
+export async function getUserByEmail(email: string) {
+  try {
+    return await prisma.user.findUnique({ where: { email } });
+  } catch (e) {
+    console.log(e);
+  }
+}
+
 export async function getUser(id: string) {
   try {
     return await prisma.user.findUnique({ where: { id } });

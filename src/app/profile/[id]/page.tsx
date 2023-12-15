@@ -3,8 +3,8 @@ import { getUser } from "@/lib/user";
 import { formatDate } from "@/lib/utils";
 import { getLoans } from "@/lib/loan";
 import { listBooks } from "@/lib/book";
-import Link from "next/link";
-import Image from "next/image";
+import { CurrentlyReading } from "@/components/currently-reading";
+import { PreviouslyRead } from "@/components/previously-read";
 
 export async function generateMetadata({ params }: any): Promise<Metadata> {
   const id = params.id;
@@ -44,26 +44,17 @@ export default async function User({ params }: { params: { id: string } }) {
           {currentlyReading && currentlyReading?.length > 0 && (
             <div className="mt-10">
               <h2 className="text-xl font-bold">Currently reading:</h2>
-              <div className="mt-6 flex gap-x-10 overflow-x-scroll">
-                {currentlyReading?.map(
-                  (book) =>
-                    book && (
-                      <Link
-                        href={`/book/${book.isbn}`}
-                        key={book.isbn}
-                        className="h-[350px] w-[250px]"
-                      >
-                        <Image
-                          src={book.cover}
-                          alt={book.title}
-                          width={350}
-                          height={250}
-                          className="h-full w-full"
-                        />
-                      </Link>
-                    ),
-                )}
-              </div>
+              <CurrentlyReading
+                currentlyReading={currentlyReading}
+                activeLoans={activeLoans}
+                userId={params.id}
+              />
+            </div>
+          )}
+          {previouslyRead && previouslyRead?.length > 0 && (
+            <div className="mt-10">
+              <h2 className="text-xl font-bold">Previously read:</h2>
+              <PreviouslyRead previouslyRead={previouslyRead} />
             </div>
           )}
         </>

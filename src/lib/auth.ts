@@ -4,7 +4,7 @@ import bcrypt from "bcryptjs";
 import { cookies } from "next/dist/client/components/headers";
 import { userSchema } from "@/lib/joi";
 import { kv } from "@vercel/kv";
-import { addUser, getUser } from "@/lib/user";
+import { addUser, getUser, getUserByEmail } from "@/lib/user";
 
 export async function registerUser({
   name,
@@ -51,7 +51,7 @@ export async function login({
   email: string;
   password: string;
 }) {
-  const user = await getUser(email);
+  const user = await getUserByEmail(email);
   if (!user) {
     return { error: "Invalid email or password", user };
   }
