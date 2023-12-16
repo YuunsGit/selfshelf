@@ -4,12 +4,12 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import Image from "next/image";
 import { BookOpenIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
+import { useContext } from "react";
+import { ProfileContext } from "@/context/profile-context";
 
-export function PreviouslyRead({
-  books,
-}: {
-  books: (Book | undefined)[] | undefined;
-}) {
+export function PreviouslyRead() {
+  const { previouslyReadList } = useContext(ProfileContext);
+
   return (
     <Swiper
       slidesPerView="auto"
@@ -17,7 +17,7 @@ export function PreviouslyRead({
       loop={false}
       className="mt-6"
     >
-      {books?.map(
+      {previouslyReadList?.map(
         (book) =>
           book && (
             <SwiperSlide
@@ -45,6 +45,13 @@ export function PreviouslyRead({
               </div>
             </SwiperSlide>
           ),
+      )}
+      {previouslyReadList?.length === 0 && (
+        <div className="mr-8 w-fit rounded border border-dashed border-taupe border-opacity-40 p-4 shadow-search">
+          <div className="flex h-[225px] w-[150px] flex-col items-center justify-center gap-y-1 rounded px-2 text-center">
+            <p>Haven&apos;t read a book yet</p>
+          </div>
+        </div>
       )}
     </Swiper>
   );
