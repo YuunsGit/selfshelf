@@ -25,7 +25,7 @@ export default function Books({ bookData }: { bookData: Book[] | undefined }) {
 
   useEffect(() => {
     if (bookData) setDisplayedBooks(bookData);
-  }, []);
+  }, [bookData]);
 
   return (
     <main className="mx-auto my-4 max-w-6xl flex-grow text-center">

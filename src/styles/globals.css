@@ -5,7 +5,10 @@
 :root {
     --placeholder-primary: #eeeeee;
     --placeholder-secondary: #cccccc;
-    --toastify-font-family: "Inter", sans-serif;
+}
+
+.Toastify__toast-body {
+    font-family: var(--font-inika);
 }
 
 body {

@@ -8,13 +8,14 @@ export default function Location({ location }: { location: string }) {
   const patt2 = /[a-zA-Z]/g;
   const letters = location.match(patt2);
   const digits = location.match(patt1);
+  const letter = letters ? letters[0].replace("Y", "X").replace("Z", "X") : "";
 
   useEffect(() => {
     if (letters && digits) {
       document.getElementById(digits[0])?.setAttribute("fill", "#00A36C");
-      document.getElementById(letters[0])?.setAttribute("fill", "#00A36C");
-      document.getElementById(letters[0])?.setAttribute("stroke-width", "8");
-      document.getElementById(letters[0])?.setAttribute("stroke", "#786552");
+      document.getElementById(letter)?.setAttribute("fill", "#00A36C");
+      document.getElementById(letter)?.setAttribute("stroke-width", "8");
+      document.getElementById(letter)?.setAttribute("stroke", "#786552");
     }
   }, []);
 

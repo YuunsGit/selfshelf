@@ -1,22 +1,23 @@
-"use client";
-
 import "swiper/css";
 import "@/styles/swiper.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Image from "next/image";
 import { BookOpenIcon } from "@heroicons/react/24/solid";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export function PreviouslyRead({
-  previouslyRead,
+  books,
 }: {
-  previouslyRead: (Book | undefined)[] | undefined;
+  books: (Book | undefined)[] | undefined;
 }) {
-  const router = useRouter();
-
   return (
-    <Swiper slidesPerView="auto" loop={false} className="mt-6">
-      {previouslyRead?.map(
+    <Swiper
+      slidesPerView="auto"
+      touchStartForcePreventDefault
+      loop={false}
+      className="mt-6"
+    >
+      {books?.map(
         (book) =>
           book && (
             <SwiperSlide
@@ -33,12 +34,13 @@ export function PreviouslyRead({
                   className="h-[225px] w-[150px] rounded"
                 />
                 <div className="absolute top-0 flex h-full w-full flex-col items-stretch justify-around rounded font-bold text-white opacity-0 group-hover:divide-y group-hover:divide-gray-400 group-hover:divide-opacity-50 group-hover:bg-black group-hover:bg-opacity-70 group-hover:opacity-100 group-hover:transition-all">
-                  <button
-                    className="h-full hover:text-gray-300"
-                    onClick={() => router.push(`/book/${book.isbn}`)}
+                  <Link
+                    href={`/book/${book.isbn}`}
+                    draggable={false}
+                    className="flex h-full flex-col items-center justify-center hover:text-cream"
                   >
                     <BookOpenIcon className="mx-auto h-8 w-8" /> View
-                  </button>
+                  </Link>
                 </div>
               </div>
             </SwiperSlide>

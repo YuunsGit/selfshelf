@@ -1,10 +1,9 @@
 import { Metadata } from "next";
 import { getUser } from "@/lib/user";
-import { formatDate } from "@/lib/utils";
 import { getLoans } from "@/lib/loan";
 import { listBooks } from "@/lib/book";
-import { CurrentlyReading } from "@/components/currently-reading";
-import { PreviouslyRead } from "@/components/previously-read";
+import Image from "next/image";
+import UserDetails from "@/components/user-details";
 
 export async function generateMetadata({ params }: any): Promise<Metadata> {
   const id = params.id;
@@ -17,49 +16,24 @@ export async function generateMetadata({ params }: any): Promise<Metadata> {
 export default async function User({ params }: { params: { id: string } }) {
   const user = await getUser(params.id);
   const userLoans = await getLoans(params.id);
-
-  const activeLoans = userLoans?.filter((loan) => loan.active);
-  const deactivateLoans = userLoans?.filter((loan) => !loan.active);
-
   const books = await listBooks();
-  const currentlyReading = books
-    ? activeLoans?.map((loan) =>
-        books.find((book) => book.isbn === loan.bookId),
-      )
-    : [];
-  const previouslyRead = books
-    ? deactivateLoans?.map((loan) =>
-        books.find((book) => book.isbn === loan.bookId),
-      )
-    : [];
 
   return (
-    <main className="mx-auto w-full max-w-7xl flex-grow rounded-md border border-taupe border-opacity-40 bg-white p-16 text-text shadow-search">
+    <main className="relative mx-auto w-full max-w-7xl flex-grow divide-y rounded-md border border-taupe border-opacity-40 bg-white p-16 text-text shadow-search">
       {user ? (
-        <>
-          <div>
-            <h1 className="text-4xl font-bold">{user.name}</h1>
-            <p>Member since {formatDate(user.createdAt)}</p>
-          </div>
-          {currentlyReading && currentlyReading?.length > 0 && (
-            <div className="mt-10">
-              <h2 className="text-xl font-bold">Currently reading:</h2>
-              <CurrentlyReading
-                currentlyReading={currentlyReading}
-                activeLoans={activeLoans}
-                userId={params.id}
-              />
-            </div>
-          )}
-          {previouslyRead && previouslyRead?.length > 0 && (
-            <div className="mt-10">
-              <h2 className="text-xl font-bold">Previously read:</h2>
-              <PreviouslyRead previouslyRead={previouslyRead} />
-            </div>
-          )}
-        </>
+        <UserDetails books={books} userLoans={userLoans} user={user} />
       ) : (
-        <></>
+        <div className="absolute left-0 right-0 top-1/2 flex h-full -translate-y-1/2 flex-col items-center justify-center">
+          <Image
+            src="/user-not-found.svg"
+            alt="User not found"
+            width={350}
+            height={350}
+          />
+          <p className="w-56 text-center text-lg">
+            We couldn&apos;t find the user you are looking for
+          </p>
+        </div>
       )}
     </main>
   );

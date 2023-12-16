@@ -30,7 +30,7 @@ export default function LoanButton({
       setLoading(true);
       const loan = await addLoan(user.id, isbn, new Date(), dueDate);
       if (loan) {
-        toast.success("Book loaned successfully!");
+        toast.success("Book loaned successfully");
         setLoan(loan);
       }
       setLoading(false);

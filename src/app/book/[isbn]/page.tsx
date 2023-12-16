@@ -32,7 +32,7 @@ export default async function Book({ params }: { params: { isbn: string } }) {
   const reader = readers?.find((loan) => loan.active);
 
   return (
-    <main className="mx-auto w-full max-w-7xl flex-grow rounded-md border border-taupe border-opacity-40 bg-white p-16 text-text shadow-search">
+    <main className="relative mx-auto w-full max-w-7xl flex-grow rounded-md border border-taupe border-opacity-40 bg-white p-16 text-text shadow-search">
       {book ? (
         <div className="flex items-start space-x-24">
           <div className="flex flex-col space-y-16">
@@ -84,7 +84,17 @@ export default async function Book({ params }: { params: { isbn: string } }) {
           </div>
         </div>
       ) : (
-        <div>Book not found</div>
+        <div className="absolute left-0 right-0 top-1/2 flex h-full -translate-y-1/2 flex-col items-center justify-center">
+          <Image
+            src="/book-not-found.svg"
+            alt="Book not found"
+            width={350}
+            height={350}
+          />
+          <p className="w-56 text-center text-lg">
+            We couldn&apos;t find the book you are looking for
+          </p>
+        </div>
       )}
     </main>
   );

@@ -22,6 +22,7 @@ export const metadata = {
 const inika = Inika({
   subsets: ["latin"],
   weight: ["400", "700"],
+  variable: "--font-inika",
 });
 
 export default async function RootLayout({
@@ -46,7 +47,7 @@ export default async function RootLayout({
           </SearchProvider>
           <Footer />
         </AuthProvider>
-        <Container />
+        <Container style={inika.variable} />
       </body>
     </html>
   );
