@@ -4,8 +4,8 @@ import { useEffect } from "react";
 import Library from "@/components/library";
 
 export default function Location({ location }: { location: string }) {
-  const patt1 = /[1-9][0-9]/g;
-  const patt2 = /[a-zA-Z]/g;
+  const patt1 = /[0-9]+/g;
+  const patt2 = /[A-Z]/g;
   const letters = location.match(patt2);
   const digits = location.match(patt1);
   const letter = letters ? letters[0].replace("Y", "X").replace("Z", "X") : "";
