@@ -24,7 +24,6 @@ export default function User() {
 
   const goToProfile = () => {
     router.push(`/profile/${user?.id}`);
-    router.refresh();
     setDropdownOpen(false);
   };
 
