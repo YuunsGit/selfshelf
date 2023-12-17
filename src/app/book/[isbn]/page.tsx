@@ -12,6 +12,7 @@ import { getReaders } from "@/lib/loan";
 import Languages from "@/components/languages";
 import Location from "@/components/location";
 import LoanButton from "@/components/loan-button";
+import BookDetails from "@/components/book-details";
 
 export async function generateMetadata({ params }: any): Promise<Metadata> {
   const isbn = params.isbn;
@@ -28,15 +29,14 @@ export async function generateMetadata({ params }: any): Promise<Metadata> {
 export default async function Book({ params }: { params: { isbn: string } }) {
   const book = await getBook(params.isbn);
   const readers = await getReaders(params.isbn);
-
   const reader = readers?.find((loan) => loan.active);
 
   return (
-    <main className="relative mx-auto w-full max-w-7xl flex-grow rounded-md border border-taupe border-opacity-40 bg-white p-16 text-text shadow-search">
+    <main className="relative mx-4 max-w-7xl flex-grow rounded-md border border-taupe border-opacity-40 bg-white p-8 text-text shadow-search lg:mx-12 lg:p-16 xl:mx-auto xl:w-full">
       {book ? (
-        <div className="flex items-start space-x-24">
-          <div className="flex flex-col space-y-16">
-            <div className="book-container-page my-6 w-fit">
+        <div className="flex flex-col items-start lg:flex-row lg:space-x-24">
+          <div className="mx-auto mb-8 flex flex-col space-y-16 lg:mb-0">
+            <div className="book-container-page mx-auto my-6 w-fit">
               <div className="book-page">
                 <Image
                   priority
@@ -47,32 +47,14 @@ export default async function Book({ params }: { params: { isbn: string } }) {
                 />
               </div>
             </div>
-            <div>
-              <div className="rounded-md border border-taupe border-opacity-40 py-4 text-center">
-                <h3 className="flex items-center justify-center gap-x-1.5 font-bold text-taupe">
-                  <BookOpenIcon className="inline h-4 w-4 align-middle" />{" "}
-                  Readers
-                </h3>
-                <p>{readers?.length || "0"} have read</p>
-              </div>
-              <div className="mt-6 rounded-md border border-taupe border-opacity-40 py-4 text-center">
-                <h3 className="flex items-center justify-center gap-x-1.5 font-bold text-taupe">
-                  <CalendarIcon className="inline h-4 w-4 align-middle" />{" "}
-                  Publish Date
-                </h3>
-                <p>{new Date(book.publishDate).getFullYear()}</p>
-              </div>
-              <div className="mt-6 rounded-md border border-taupe border-opacity-40 py-4 text-center">
-                <h3 className="flex items-center justify-center gap-x-1.5 font-bold text-taupe">
-                  <LanguageIcon className="inline h-4 w-4 align-middle" />{" "}
-                  Languages
-                </h3>
-                <Languages book={book} />
-              </div>
-            </div>
+            <BookDetails
+              book={book}
+              readers={readers}
+              className="hidden lg:block"
+            />
           </div>
           <div>
-            <div className="flex justify-between">
+            <div className="flex flex-col justify-between lg:flex-row">
               <div>
                 <h1 className="text-4xl font-bold text-text">{book.title}</h1>
                 <p>by {book.author}</p>
@@ -80,6 +62,11 @@ export default async function Book({ params }: { params: { isbn: string } }) {
               <LoanButton reader={reader} isbn={book.isbn} />
             </div>
             <Description content={book.description} />
+            <BookDetails
+              book={book}
+              readers={readers}
+              className="blkoc lg:hidden"
+            />
             <Location location={book.location} />
           </div>
         </div>

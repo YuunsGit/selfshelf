@@ -10,6 +10,10 @@ export async function generateMetadata({ params }: any): Promise<Metadata> {
   const user = await getUser(id);
   return {
     title: user?.name || "User Not Found",
+    description:
+      "Self Shelf profile of " +
+      user?.name +
+      ". Explore, borrow, and organize your books effortlessly with Self Shelf.",
   };
 }
 
@@ -19,7 +23,7 @@ export default async function User({ params }: { params: { id: string } }) {
   const books = await listBooks();
 
   return (
-    <main className="relative mx-auto w-full max-w-7xl flex-grow divide-y rounded-md border border-taupe border-opacity-40 bg-white p-16 text-text shadow-search">
+    <main className="relative mx-4 max-w-7xl flex-grow divide-y rounded-md border border-taupe border-opacity-40 bg-white p-8 text-text shadow-search lg:mx-12 lg:p-16 xl:mx-auto xl:w-full">
       {user ? (
         <UserDetails books={books} userLoans={userLoans} user={user} />
       ) : (
@@ -27,11 +31,11 @@ export default async function User({ params }: { params: { id: string } }) {
           <Image
             src="/user-not-found.svg"
             alt="User not found"
-            width={350}
-            height={350}
+            width={150}
+            height={150}
           />
           <p className="w-56 text-center text-lg">
-            We couldn&apos;t find the user you are looking for
+            We couldn&apos;t find the profile you are looking for
           </p>
         </div>
       )}

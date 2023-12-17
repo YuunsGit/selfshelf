@@ -55,9 +55,11 @@ export default function UserDetails({
         setPreviouslyReadList,
       }}
     >
-      <div className="flex justify-between pb-10">
+      <div className="flex flex-col justify-between gap-y-10 pb-10 lg:flex-row">
         <div>
-          <h1 className="text-4xl font-bold">{user.name}</h1>
+          <h1 className="text-2xl font-bold md:text-3xl lg:text-4xl">
+            {user.name}
+          </h1>
           <p className="mt-3">Member since {formatDate(user.createdAt)}</p>
         </div>
         <Badge books={books} />

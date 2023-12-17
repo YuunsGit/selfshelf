@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import Library from "@/components/library";
 
 export default function Location({ location }: { location: string }) {
-  const patt1 = /[0-9]/g;
+  const patt1 = /[1-9][0-9]/g;
   const patt2 = /[a-zA-Z]/g;
   const letters = location.match(patt2);
   const digits = location.match(patt1);
@@ -22,7 +22,7 @@ export default function Location({ location }: { location: string }) {
   return (
     <div className="mt-16 space-y-8 text-center text-text">
       <h2 className="text-2xl font-bold">
-        Location in the library: {location}
+        Location in the library: <b className="text-bronze">{location}</b>
       </h2>
       <Library />
     </div>

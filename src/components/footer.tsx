@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="mt-16 flex w-screen flex-col justify-between py-6 text-text text-opacity-70">
+    <footer className="mt-8 flex w-screen flex-col justify-between py-6 text-text text-opacity-70 lg:mt-16">
       <div className="mx-auto text-center">
         Self Shelf &bull; This is an{" "}
         <a

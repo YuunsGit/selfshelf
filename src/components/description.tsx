@@ -13,7 +13,7 @@ export default function Description({ content }: { content: string }) {
   }, [descRef.current]);
 
   return (
-    <>
+    <div className="mb-10 lg:mb-0">
       <div className="relative mt-6 overflow-hidden">
         <p
           ref={descRef}
@@ -39,6 +39,6 @@ export default function Description({ content }: { content: string }) {
           Read {extended ? "less ▴" : "more ▾"}
         </button>
       )}
-    </>
+    </div>
   );
 }

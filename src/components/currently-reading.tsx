@@ -61,7 +61,7 @@ export function CurrentlyReading({
 
   return (
     <>
-      <Swiper slidesPerView="auto" loop={false} className="mt-6">
+      <Swiper slidesPerView="auto" loop={false} className="relative mt-6">
         {currentlyReadingList?.map(
           (book) =>
             book && (
@@ -71,6 +71,7 @@ export function CurrentlyReading({
               >
                 <div className="group relative w-fit">
                   <Image
+                    priority
                     alt={book.title}
                     src={book.cover}
                     width={150}
@@ -104,6 +105,9 @@ export function CurrentlyReading({
                 </div>
               </SwiperSlide>
             ),
+        )}
+        {currentlyReadingList?.length > 0 && (
+          <div className="absolute right-0 top-0 z-10 h-full w-12 bg-gradient-to-r from-transparent to-white"></div>
         )}
         {currentlyReadingList?.length === 0 && (
           <div className="mr-8 w-fit rounded border border-dashed border-taupe border-opacity-40 p-4 shadow-search">

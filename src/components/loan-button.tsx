@@ -17,10 +17,11 @@ export default function LoanButton({
   const user = useContext(AuthContext);
   const router = useRouter();
   const [loan, setLoan] = useState<Loan>();
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setLoan(reader);
+    setLoading(false);
   }, []);
 
   const handleLoan = async () => {
@@ -43,7 +44,7 @@ export default function LoanButton({
         onClick={handleLoan}
         disabled={!!loan || loading}
         className={cn(
-          "w-48 rounded px-6 py-3 text-white shadow-search",
+          "mt-6 w-full rounded px-6 py-3 text-white shadow-search lg:mt-0 lg:w-48",
           loan ? "bg-gray-500" : "bg-tangerine hover:bg-bronze",
         )}
       >

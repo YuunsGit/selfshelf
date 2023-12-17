@@ -13,7 +13,7 @@ export default function Badge({ books }: { books: Book[] | undefined }) {
   };
 
   return (
-    <div className="flex items-center justify-center gap-x-5 rounded border-taupe border-opacity-40 px-6 py-4 shadow-search">
+    <div className="flex items-center justify-center gap-x-5 rounded border-taupe border-opacity-40 px-4 py-4 shadow-search sm:px-6">
       <Image
         src={getBadge(previouslyReadList?.length / (books?.length || 0))}
         alt="Badge of the user"
@@ -22,7 +22,7 @@ export default function Badge({ books }: { books: Book[] | undefined }) {
         className="drop-shadow-lg"
       />
       <div className="flex flex-col justify-center gap-y-1">
-        <div className="h-6 w-64 rounded border border-taupe border-opacity-40 bg-gray-100 p-1 shadow-search">
+        <div className="h-6 w-36 rounded border border-taupe border-opacity-40 bg-gray-100 p-1 shadow-search sm:w-64">
           <div
             className="h-full rounded"
             style={{

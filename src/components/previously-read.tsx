@@ -15,7 +15,7 @@ export function PreviouslyRead() {
       slidesPerView="auto"
       touchStartForcePreventDefault
       loop={false}
-      className="mt-6"
+      className="relative mt-6"
     >
       {previouslyReadList?.map(
         (book) =>
@@ -45,6 +45,9 @@ export function PreviouslyRead() {
               </div>
             </SwiperSlide>
           ),
+      )}
+      {previouslyReadList?.length > 0 && (
+        <div className="absolute right-0 top-0 z-10 h-full w-12 bg-gradient-to-r from-transparent to-white"></div>
       )}
       {previouslyReadList?.length === 0 && (
         <div className="mr-8 w-fit rounded border border-dashed border-taupe border-opacity-40 p-4 shadow-search">
