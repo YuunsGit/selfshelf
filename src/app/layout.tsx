@@ -38,7 +38,7 @@ export const metadata = {
     title: "Self Shelf",
     description:
       "Explore, borrow, and organize your books effortlessly with Self Shelf.",
-    siteName: "Self Shelf",
+    images: "/og.jpg",
   },
   twitter: {
     card: "summary_large_image",
