@@ -5,7 +5,7 @@ import reading from "./lottie/reading.json";
 
 export default function Reading() {
   return (
-    <div className="h-animation w-animation">
+    <div className="mx-12 sm:mx-0 sm:h-animation sm:w-animation">
       <Lottie animationData={reading} loop={true} />
     </div>
   );

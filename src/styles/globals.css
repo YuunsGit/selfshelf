@@ -12,7 +12,12 @@
 }
 
 body {
-  background-color: #f5f5f1;
+    background-color: #f5f5f1;
+}
+
+*::selection {
+    background-color: #c57429;
+    color: white;
 }
 
 .book-container {
@@ -31,6 +36,10 @@ body {
     }
 }
 
+.init-anim {
+    animation: 1s ease 0s 1 initAnimation;
+}
+
 .book {
     width: 150px;
     height: 250px;
@@ -38,7 +47,6 @@ body {
     transform-style: preserve-3d;
     transform: rotateY(0deg);
     transition: 0.5s ease;
-    animation: 1s ease 0s 1 initAnimation;
 }
 
 .book-container:hover .book,
@@ -66,7 +74,7 @@ body {
     width: 28px;
     height: 246px;
     transform: translateX(133px) rotateY(90deg);
-    background: blue linear-gradient(90deg,
+    background: white linear-gradient(90deg,
     #fff 0%,
     #f9f9f9 5%,
     #fff 10%,

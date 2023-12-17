@@ -29,7 +29,7 @@ export default function LoginForm() {
   };
 
   return (
-    <form className="mt-4 space-y-6" onSubmit={(e) => handleSubmit(e)}>
+    <form className="space-y-6" onSubmit={(e) => handleSubmit(e)}>
       <div>
         <label
           htmlFor="email"

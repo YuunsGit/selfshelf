@@ -5,7 +5,7 @@ import research from "./lottie/research.json";
 
 export default function Research() {
   return (
-    <div className="h-animation w-animation">
+    <div className="mx-12 sm:mx-0 sm:h-animation sm:w-animation">
       <Lottie animationData={research} loop={true} />
     </div>
   );

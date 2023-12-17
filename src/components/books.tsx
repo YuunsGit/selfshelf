@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { SearchContext } from "@/context/search-context";
 import Link from "next/link";
 
@@ -28,9 +28,9 @@ export default function Books({ bookData }: { bookData: Book[] | undefined }) {
   }, [bookData]);
 
   return (
-    <main className="mx-auto my-4 max-w-6xl flex-grow text-center">
+    <main className="mx-auto my-12 max-w-6xl flex-grow text-center lg:my-4">
       <h1 className="text-4xl font-bold text-text">&bull; Library &bull;</h1>
-      <div className="mt-16 grid grid-cols-4 place-items-center gap-y-12">
+      <div className="mt-16 grid grid-cols-2 place-items-center gap-x-10 gap-y-12 px-8 sm:grid-cols-3 md:grid-cols-4 md:gap-x-0">
         {displayedBooks?.map((book, index) => (
           <>
             {book ? (
@@ -60,7 +60,7 @@ export default function Books({ bookData }: { bookData: Book[] | undefined }) {
                 width={1400}
                 height={50}
                 alt="Shelf"
-                className="-z-10 col-span-4 -translate-y-16"
+                className="-z-10 col-span-4 hidden -translate-y-16 md:block"
                 style={{
                   filter: "drop-shadow(0px 20px 15px #222)",
                 }}

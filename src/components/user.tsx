@@ -54,17 +54,16 @@ export default function User() {
   return (
     <>
       {user ? (
-        <div
-          ref={dropdownRef}
-          className="relative flex flex-1 justify-end text-left"
-        >
+        <div ref={dropdownRef} className="relative flex flex-1 justify-end">
           <button
             type="button"
             onClick={toggleDropdown}
-            className="relative flex items-center gap-x-2 text-right text-text"
+            className="relative flex items-center justify-end gap-x-2 text-text"
           >
             <UserSolid className="h-10 w-10" />
-            <h2 className="font-semibold">{user.name}</h2>
+            <h2 className="w-1/2 truncate whitespace-nowrap font-semibold sm:w-auto">
+              {user.name}
+            </h2>
           </button>
           {dropdownOpen && (
             <div
@@ -93,9 +92,9 @@ export default function User() {
         <div className="flex flex-1 items-center justify-end">
           <Link
             href="/login"
-            className="mr-0 inline-flex items-center gap-x-2 text-text"
+            className="mr-0 inline-flex items-center gap-x-1 text-text"
           >
-            <UserSolid className="h-10 w-10" />
+            <UserSolid className="h-8 w-8" />
             <h2 className="text-lg font-semibold">Login</h2>
           </Link>
         </div>
