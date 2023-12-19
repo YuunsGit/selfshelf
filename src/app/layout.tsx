@@ -27,7 +27,7 @@ export const metadata = {
     },
     {
       name: "Furkan Adıktı",
-      url: "https://www.0xy.dev",
+      url: "https://0xy.dev",
     },
   ],
   creator: "Yunus Emre Kepenek",

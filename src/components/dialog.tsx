@@ -1,6 +1,5 @@
 import { ExclamationTriangleIcon } from "@heroicons/react/24/outline";
 import { cn } from "@/lib/utils";
-import { Dispatch, SetStateAction } from "react";
 
 export function Dialog({
   content,
@@ -9,7 +8,6 @@ export function Dialog({
   type,
   onConfirm,
   onCancel,
-  setDialogOpen,
 }: {
   content: string;
   confirmButton: string;
@@ -17,7 +15,6 @@ export function Dialog({
   type: "warning" | "danger";
   onConfirm: () => void;
   onCancel: () => void;
-  setDialogOpen: Dispatch<SetStateAction<boolean>>;
 }) {
   return (
     <div className="relative z-10">

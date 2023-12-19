@@ -139,7 +139,6 @@ export function CurrentlyReading({
             setDialogOpen(false);
             setReturningBook(null);
           }}
-          setDialogOpen={setDialogOpen}
         />
       )}
     </>
