@@ -8,6 +8,7 @@ import Location from "@/components/location";
 import LoanButton from "@/components/loan-button";
 import BookDetails from "@/components/book-details";
 import { notFound } from "next/navigation";
+import BookTitle from "@/components/book-title";
 
 export async function generateMetadata({ params }: any): Promise<Metadata> {
   const isbn = params.isbn;
@@ -59,10 +60,7 @@ export default async function Book({ params }: { params: { isbn: string } }) {
         </div>
         <div>
           <div className="flex flex-col justify-between lg:flex-row">
-            <div>
-              <h1 className="text-4xl font-bold text-text">{book.title}</h1>
-              <p>by {book.author}</p>
-            </div>
+            <BookTitle book={book} />
             <LoanButton reader={reader} isbn={book.isbn} />
           </div>
           <Description content={book.description} />

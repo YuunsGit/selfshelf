@@ -47,13 +47,13 @@ export async function deleteBook(isbn: string) {
 export async function updateBook(
   isbn: string,
   attr: {
-    author: string;
-    title: string;
-    publishDate: Date;
-    cover: string;
-    location: string;
-    languages: string[];
-    description: string;
+    author?: string;
+    title?: string;
+    publishDate?: Date;
+    cover?: string;
+    location?: string;
+    languages?: string[];
+    description?: string;
   },
 ) {
   try {

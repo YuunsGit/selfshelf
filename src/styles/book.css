@@ -35,7 +35,7 @@
     left: 0;
     width: 300px;
     height: 450px;
-    transform: translateZ(27.5px);
+    transform: translateZ(35px);
     animation: placeholder ease-in-out 1.5s infinite;
     border-radius: 0 3px 3px 0;
     box-shadow: 5px 5px 20px #666;
