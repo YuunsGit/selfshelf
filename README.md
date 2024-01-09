@@ -7,7 +7,7 @@
   Simple library management app
 </h3>
 <p align="center">
-  <a href="https://ss.yunusemre.dev" target="_blank">Self Shelf</a> built with <a href="https://nextjs.org/" target="_blank">Next.js</a> and hosted with <a href="https://vercel.com/" target="_blank">Vercel</a>
+  <a href="https://ss.yunusemre.dev" target="_blank">Self Shelf</a> built with <a href="https://nextjs.org/" target="_blank">React</a> and hosted with <a href="https://vercel.com/" target="_blank">Vercel</a>
 </p>
 <br/>
 <h1 align="center">
