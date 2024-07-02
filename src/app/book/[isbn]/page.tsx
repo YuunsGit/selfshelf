@@ -44,6 +44,7 @@ export default async function Book({ params }: { params: { isbn: string } }) {
           <div className="book-container-page mx-auto my-6 w-fit">
             <div className="book-page">
               <Image
+                unoptimized
                 priority
                 alt={book.cover}
                 height={300}
